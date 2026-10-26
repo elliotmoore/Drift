@@ -1,0 +1,60 @@
+name: Drift
+options:
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CLANG_CXX_LANGUAGE_STANDARD: c++17
+    GCC_PREPROCESSOR_DEFINITIONS: ["$(inherited)", "TEST=1"]
+    HEADER_SEARCH_PATHS: ["$(SRCROOT)/DSP/shim", "$(SRCROOT)/DSP/third_party", "$(SRCROOT)/DSP/Bridge"]
+    GCC_OPTIMIZATION_LEVEL: "3"
+targets:
+  Drift:
+    type: application
+    platform: iOS
+    configFiles:
+      Debug: Config/Base.xcconfig
+      Release: Config/Base.xcconfig
+    sources:
+      - path: App
+      - path: Local        # your private artwork, if present (git-ignored)
+        optional: true
+      - path: DSP/Bridge
+      - path: DSP/third_party
+        excludes: ["**/*.txt", "**/LICENSE", "**/README.md"]
+        compilerFlags: ["-w"]
+    settings:
+      base:
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_OBJC_BRIDGING_HEADER: DSP/Bridge/Drift-Bridging-Header.h
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        MARKETING_VERSION: "0.9.1"
+        CURRENT_PROJECT_VERSION: "36"
+        ENABLE_PREVIEWS: YES
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UIBackgroundModes: [audio]
+        CFBundleDisplayName: Drift
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        # .drift sound files: shared from the Library, opened from Messages, Files, AirDrop.
+        UTExportedTypeDeclarations:
+          - UTTypeIdentifier: org.drift.sound
+            UTTypeDescription: Drift Sound
+            UTTypeConformsTo: [public.json, public.data]
+            UTTypeTagSpecification:
+              public.filename-extension: [drift]
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Drift Sound
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Owner
+            LSItemContentTypes: [org.drift.sound]
+        LSSupportsOpeningDocumentsInPlace: false

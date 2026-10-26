@@ -1,0 +1,8 @@
+// Identity and signing. Override in Config/Local.xcconfig (git-ignored), e.g.
+//   DEVELOPMENT_TEAM = ABCDE12345
+//   PRODUCT_BUNDLE_IDENTIFIER = com.yourname.drift
+PRODUCT_BUNDLE_IDENTIFIER = org.example.drift
+DEVELOPMENT_TEAM =
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
+
+#include? "Local.xcconfig"

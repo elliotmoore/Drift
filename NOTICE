@@ -1,0 +1,31 @@
+Drift
+Copyright (c) 2026 Elliot Moore. MIT License (see LICENSE).
+
+This product includes software developed by others:
+
+* Plaits and Marbles DSP, Rings' reverb, and stmlib -- Copyright Emilie Gillet
+  (Mutable Instruments). MIT License.
+  https://github.com/pichenettes/eurorack, https://github.com/pichenettes/stmlib
+  Files: DSP/third_party/plaits, DSP/third_party/marbles, DSP/third_party/rings,
+  DSP/third_party/stmlib,
+  DSP/Bridge/marbles_scales.inc. Unmodified; each file carries its own notice.
+  See DSP/third_party/LICENSE-MI.txt.
+
+* Wakes -- Copyright (c) 2026 Adara Barami | Worldwave. MIT License.
+  https://github.com/Worldwave/Wakes
+  The vendored sources above were taken from Wakes' copy, and parts of
+  DSP/Bridge/DriftEngine.cpp (running Marbles' generators at the Plaits block rate, the
+  clock cap, the routing scales, the burst) are adapted from Wakes' sp1_synth.cc and
+  sp1_marbles.cc. See DSP/third_party/LICENSE-Wakes.txt.
+
+Thanks also to the SP-1 community whose work Wakes is built on, though none of their
+code is in Drift: chattock (sp1-tape-looper), Tim Knapen (SP-1-dev), Eric Lewis
+(sp1-midi), Benjamin Reece (feldd), Ryan Gilmore (sp1-usb-audio), and
+solderless.engineering.
+
+Drift is not affiliated with or endorsed by Mutable Instruments, Worldwave or
+Teenage Engineering.
+"Plaits" and "Marbles" name the two pages of the app after the modules whose code they
+run, and with "Mutable Instruments" credit the original work; they are not used to
+suggest endorsement. Mutable Instruments' logos and artwork are not part of this
+repository.

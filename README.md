@@ -29,7 +29,7 @@ You need a Mac with **Xcode 27** and [XcodeGen](https://github.com/yonaskolb/Xco
 (`brew install xcodegen`). Drift runs on iPhone with iOS 26 or later.
 
 ```sh
-git clone <this repository>
+git clone https://github.com/elliotmoore/Drift.git
 cd Drift
 xcodegen generate
 open Drift.xcodeproj
